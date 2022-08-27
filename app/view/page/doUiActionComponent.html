@@ -211,8 +211,8 @@ new Vue({
     this.doUiAction('refreshTableData');
   },
   methods: {
-    async doUiAction(actionId, uiActionData) {
-      switch (actionId) {
+    async doUiAction(uiActionId, uiActionData) {
+      switch (uiActionId) {
         case 'refreshTableData':
           await window.$vueComponent['classSelectDialog'] && window.$vueComponent['classSelectDialog'].selectItem({ "item": { "value": "2021-01级-01班" } });
           await this.refreshTableData();
@@ -254,7 +254,7 @@ new Vue({
           await this.computedTableData();
           break;
         default:
-          console.error("[doUiAction] actionId not find", { actionId });
+          console.error("[doUiAction] uiActionId not find", { uiActionId });
           break;
       }
     },
