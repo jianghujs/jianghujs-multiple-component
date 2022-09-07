@@ -211,53 +211,6 @@ new Vue({
     this.doUiAction('refreshTableData');
   },
   methods: {
-    async doUiAction(uiActionId, uiActionData) {
-      switch (uiActionId) {
-        case 'refreshTableData':
-          await window.$vueComponent['classSelectDialog'] && window.$vueComponent['classSelectDialog'].selectItem({ "item": { "value": "2021-01级-01班" } });
-          await this.refreshTableData();
-          await this.computedTableData();
-          break;
-        case 'startCreateItem':
-          await this.clearItemData();
-          await this.openCreateDialog();
-          break;
-        case 'insertItem':
-          await this.prepareValidate();
-          await this.confirmCreateItemDialog();
-          await this.prepareCreateItem();
-          await this.doCreateItem();
-          await this.refreshTableData();
-          await this.computedTableData();
-          await this.closeDrawerShow();
-          break;
-        case 'startUpdateItem':
-          await this.prepareItemData(uiActionData);
-          await this.openUpdateDialog();
-          break;
-        case 'updateItem':
-          await this.prepareValidate();
-          await this.confirmUpdateItemDialog();
-          await this.doUpdateItem();
-          await this.refreshTableData();
-          await this.computedTableData();
-          await this.closeDrawerShow();
-          break;
-        case 'deleteItem':
-          await this.confirmDeleteItemDialog();
-          await this.prepareItemData(uiActionData);
-          await this.doDeleteItem();
-          await this.refreshTableData();
-          await this.computedTableData();
-          break;
-        case 'computedTableData':
-          await this.computedTableData();
-          break;
-        default:
-          console.error("[doUiAction] uiActionId not find", { uiActionId });
-          break;
-      }
-    },
     async refreshTableData() {
       this.isTableLoading = true;
       const result = await window.jianghuAxios({
