@@ -11,7 +11,7 @@
 
         <v-col cols="12" xs="12" sm="4" md="4" xl="4" class="pl-0">
           <v-btn color="success" dark class="elevation-0 mr-2" @click="doUiAction('startCreateItem')">新增</v-btn>
-          <span class="body-2">共{{ tableData.length }}条记录</span>
+          <span class="body-2">共{{ i.length }}条记录</span>
         </v-col>
 
         <v-spacer></v-spacer>
@@ -33,7 +33,7 @@
 
       </v-row>
       <v-data-table :headers="headers"
-          :items="tableDataFromBackend"
+          :items="tableData"
           :search="searchInput"
           :footer-props="{ itemsPerPageOptions: [20, 40, 60, 100, -1] }"
           :items-per-page="20"
@@ -234,6 +234,7 @@ new Vue({
       if (this.currentTableGenderType && this.currentTableGenderType !== 'all') {
         dataList = dataList.filter(({gender}) => gender === this.currentTableGenderType);
       }
+
       if (this.classSelectDialog_selected) {
         dataList = dataList.filter(({classId}) => classId === this.classSelectDialog_selected);
       }
