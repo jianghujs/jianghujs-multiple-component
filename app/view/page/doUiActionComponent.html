@@ -33,7 +33,7 @@
 
       </v-row>
       <v-data-table :headers="headers"
-          :items="tableData"
+          :items="tableDataFromBackend"
           :search="searchInput"
           :footer-props="{ itemsPerPageOptions: [20, 40, 60, 100, -1] }"
           :items-per-page="20"
