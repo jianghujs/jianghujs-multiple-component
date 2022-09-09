@@ -139,6 +139,7 @@
     classSelectDialog_selected: null,
     classSelectDialog_filterText: null,
     classSelectDialog_dataList: [
+        { value: "all", text: "全部" },
         { value: "2021-01级-01班", text: "2021-01级-01班" },
         { value: "2021-01级-02班", text: "2021-01级-02班" },
         { value: "2021-02级-01班", text: "2021-02级-01班" },
@@ -163,9 +164,6 @@
       icType: [{"value": "身份证", "text": "身份证"}, {"value": "护照", "text": "护照"}],
       enrollmentType: [{"value": "正常升学", "text": "正常升学"}, {"value": "借读", "text": "借读"}],
       studentStatus: [{"value": "正常", "text": "正常"}, {"value": "退学", "text": "退学"}],
-      class: [
-        { text: '全部班级', value: 'all' },
-      ],
     },
     currentTableGenderType: 'all',
     isEditDrawerShow: false,
@@ -237,7 +235,7 @@ new Vue({
         dataList = dataList.filter(({gender}) => gender === this.currentTableGenderType);
       }
 
-      if (this.classSelectDialog_selected) {
+      if (this.classSelectDialog_selected && this.classSelectDialog_selected !== 'all') {
         dataList = dataList.filter(({classId}) => classId === this.classSelectDialog_selected);
       }
       this.tableData = dataList;

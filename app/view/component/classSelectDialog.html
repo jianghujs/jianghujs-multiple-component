@@ -1,8 +1,17 @@
 <script type="text/x-template" id="classSelectDialog">
   <span>
-    <v-select :class="{'mr-3': !isMobile, 'mr-0': isMobile}" @mouseup="classSelectDialog_shown = true" v-model="classSelectDialog_selected"
-      :items="classSelectDialog_dataList" readonly :label="classSelectDialog_title" hide-details dense
+
+    <v-select class="cus-v-input" :class="{'mr-3': !isMobile, 'mr-0': isMobile}" @mouseup="classSelectDialog_shown = true" v-model="classSelectDialog_selected"
+    :items="[{value: 'all', text: '全部'}, ...classSelectDialog_dataList]" readonly :label="classSelectDialog_title" hide-details dense
               filled single-line hide-no-data hide-selected />
+
+    
+
+    <!-- <v-select class="cus-v-input" :class="{'mr-2': !isMobile}" v-model="currentTableGenderType" :items="[{value: 'all', text: '全部'}, ...constantCollection.gender]"
+                    prefix="性别：" dense item-text="text" item-value="value" dense filled single-line></v-select>
+     -->
+
+
     <v-dialog v-model="classSelectDialog_shown" scrollable max-width="500px">
       <v-card>
         <v-card-title>
