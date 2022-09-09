@@ -151,7 +151,7 @@ CREATE TABLE `_record_history` (
   PRIMARY KEY (`id`),
   KEY `index_record_id` (`recordId`),
   KEY `index_table_action` (`table`, `operation`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2150 COMMENT = '数据历史表';
+) ENGINE = InnoDB AUTO_INCREMENT = 2170 COMMENT = '数据历史表';
 
 
 
@@ -225,7 +225,7 @@ CREATE TABLE `_resource_request_log` (
   PRIMARY KEY (`id`),
   KEY `resourceId_index` (`resourceId`),
   KEY `packageId_index` (`packageId`)
-) ENGINE = InnoDB AUTO_INCREMENT = 4833 COMMENT = '文件表; 软删除未启用;';
+) ENGINE = InnoDB AUTO_INCREMENT = 5086 COMMENT = '文件表; 软删除未启用;';
 
 
 
@@ -259,6 +259,33 @@ INSERT INTO `_role` (`id`,`roleId`,`roleName`,`roleDesc`,`operation`,`operationB
 
 
 # ------------------------------------------------------------
+# SCHEMA DUMP FOR TABLE: _test_case
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `_test_case`;
+CREATE TABLE `_test_case` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pageId` varchar(255) DEFAULT NULL COMMENT '页面Id',
+  `testId` varchar(255) DEFAULT NULL COMMENT '测试用例Id; 10000 ++',
+  `testName` varchar(255) DEFAULT NULL COMMENT '测试用例名',
+  `uiActionIdList` varchar(255) DEFAULT NULL COMMENT 'uiAction列表; 一个测试用例对应多个uiActionId',
+  `testOpeartion` text COMMENT '测试用例步骤;',
+  `operation` varchar(255) DEFAULT NULL COMMENT '操作; jhInsert, jhUpdate, jhDelete jhRestore',
+  `operationByUserId` varchar(255) DEFAULT NULL COMMENT '操作者userId; recordContent.operationByUserId',
+  `operationByUser` varchar(255) DEFAULT NULL COMMENT '操作者用户名; recordContent.operationByUser',
+  `operationAt` varchar(255) DEFAULT NULL COMMENT '操作时间; recordContent.operationAt; E.g: 2021-05-28T10:24:54+08:00 ',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 33 COMMENT = '测试用例表';
+
+
+# ------------------------------------------------------------
+# DATA DUMP FOR TABLE: _test_case
+# ------------------------------------------------------------
+
+
+
+
+# ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: _ui
 # ------------------------------------------------------------
 
@@ -276,26 +303,27 @@ CREATE TABLE `_ui` (
   `operationByUser` varchar(255) DEFAULT NULL COMMENT '操作者用户名',
   `operationAt` varchar(255) DEFAULT NULL COMMENT '操作时间; E.g: 2021-05-28T10:24:54+08:00 ',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 56 COMMENT = 'ui 施工方案';
+) ENGINE = InnoDB AUTO_INCREMENT = 57 COMMENT = 'ui 施工方案';
 
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: _ui
 # ------------------------------------------------------------
 
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (11,'doUiActionComponent','ui','refreshTableData','✅获取表格数据','{ \"before\": [{\"vueComponent\": \"classSelectDialog\", \"function\": \"selectItem\", \"functionParamObj\": { \"item\": { \"value\": \"2021-01级-01班\" } }}], \"main\": [{\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (13,'doUiActionComponent','ui','startCreateItem','✅打开创建数据抽屉','{ \"main\": [{\"function\": \"clearItemData\"}, {\"function\": \"openCreateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (14,'doUiActionComponent','ui','insertItem','✅创建数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"vueComponent\": \"jhConfirmDialog\", \"function\": \"confirmDialog\", \"functionParamObj\": { \"title\": \"新增\", \"content\": \"确定新增吗？\" }}], \"main\": [{\"function\": \"prepareCreateItem\"}, {\"function\": \"doCreateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (15,'doUiActionComponent','ui','startUpdateItem','✅打开更新数据抽屉','{ \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (16,'doUiActionComponent','ui','updateItem','✅更新数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"vueComponent\": \"jhConfirmDialog\", \"function\": \"confirmDialog\", \"functionParamObj\": { \"title\": \"修改\", \"content\": \"确定修改吗？\" }}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeDrawerShow\"}] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (17,'doUiActionComponent','ui','deleteItem','✅删除数据','{ \"before\": [{\"vueComponent\": \"jhConfirmDialog\", \"function\": \"confirmDialog\", \"functionParamObj\": { \"title\": \"删除\", \"content\": \"确定删除吗？\" }}], \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [] }',NULL,'insert',NULL,NULL,NULL);
-INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (23,'doUiActionComponent','ui','computedTableData','✅','{ \"main\": [{\"function\": \"computedTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
+INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (11,'doUiActionComponent','ui','refreshTableData','✅获取表格数据','{\"before\":[{\"vueComponent\":\"classSelectDialog\",\"function\":\"selectItem\",\"functionParamObj\":{\"item\":{\"value\":\"2021-01级-01班\"}}}],\"main\":[{\"function\":\"refreshTableData\"}],\"after\":[{\"function\":\"computedTableData\"}]}',NULL,'update','vscode','vscode','2022-09-09T15:10:15+08:00');
+INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (13,'doUiActionComponent','ui','startCreateItem','✅打开创建数据抽屉','{ \"main\": [{\"function\": \"clearItemData\"}, {\"function\": \"openCreateDialog\"}] }',NULL,'update','vscode','vscode','2022-09-09T15:10:15+08:00');
+INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (14,'doUiActionComponent','ui','insertItem','✅创建数据','{\"before\":[{\"function\":\"prepareValidate\"},{\"vueComponent\":\"jhConfirmDialog\",\"function\":\"confirmDialog\",\"functionParamObj\":{\"title\":\"新增\",\"content\":\"确定新增吗？\"}}],\"main\":[{\"function\":\"prepareCreateItem\"},{\"function\":\"doCreateItem\"},{\"function\":\"refreshTableData\"}],\"after\":[{\"function\":\"closeDrawerShow\"},{\"function\":\"computedTableData\"}]}',NULL,'update','vscode','vscode','2022-09-09T15:10:15+08:00');
+INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (15,'doUiActionComponent','ui','startUpdateItem','✅打开更新数据抽屉','{ \"main\": [{\"function\": \"prepareItemData\"}, {\"function\": \"openUpdateDialog\"}] }',NULL,'update','vscode','vscode','2022-09-09T15:10:15+08:00');
+INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (16,'doUiActionComponent','ui','updateItem','✅更新数据','{\"before\":[{\"function\":\"prepareValidate\"},{\"vueComponent\":\"jhConfirmDialog\",\"function\":\"confirmDialog\",\"functionParamObj\":{\"title\":\"修改\",\"content\":\"确定修改吗？\"}}],\"main\":[{\"function\":\"doUpdateItem\"},{\"function\":\"refreshTableData\"}],\"after\":[{\"function\":\"closeDrawerShow\"},{\"function\":\"computedTableData\"}]}',NULL,'update','vscode','vscode','2022-09-09T15:10:15+08:00');
+INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (17,'doUiActionComponent','ui','deleteItem','✅删除数据','{\"before\":[{\"vueComponent\":\"jhConfirmDialog\",\"function\":\"confirmDialog\",\"functionParamObj\":{\"title\":\"删除\",\"content\":\"确定删除吗？\"}}],\"main\":[{\"function\":\"prepareItemData\"},{\"function\":\"doDeleteItem\"}],\"after\":[{\"function\":\"refreshTableData\"},{\"function\":\"computedTableData\"}]}',NULL,'update','vscode','vscode','2022-09-09T15:10:15+08:00');
 INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (18,'doUiAction','ui','refreshTableData','✅获取表格数据','{ \"main\": [{\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
 INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (19,'doUiAction','ui','startInsertItem','✅打开创建数据抽屉','{ \"main\": [{\"function\": \"clearCreateForm\"}, {\"function\": \"openCreateDrawer\"}] }',NULL,'insert',NULL,NULL,NULL);
 INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (20,'doUiAction','ui','createItem','✅创建数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"prepareCreateItem\"}, {\"function\": \"confirmCreateFormDialog\"}], \"main\": [ {\"function\": \"doCreateItem\"}], \"after\": [{\"function\": \"closeCreateDrawer\"}, {\"function\": \"refreshTableData\"}] }',NULL,'insert',NULL,NULL,NULL);
 INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (21,'doUiAction','ui','startUpdateItem','✅打开更新数据抽屉','{ \"main\": [{\"function\": \"fillUpdateForm\"}, {\"function\": \"openUpdateDrawer\"}] }',NULL,'insert',NULL,NULL,NULL);
 INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (22,'doUiAction','ui','updateItem','✅更新数据','{ \"before\": [{\"function\": \"prepareValidate\"}, {\"function\": \"confirmUpdateItemDialog\"}], \"main\": [{\"function\": \"doUpdateItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [{\"function\": \"closeUpdateDrawer\"}] }',NULL,'insert',NULL,NULL,NULL);
 INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (23,'doUiAction','ui','deleteItem','✅删除数据','{ \"before\": [{\"function\": \"confirmDeleteItemDialog\"}], \"main\": [ {\"function\": \"doDeleteItem\"}, {\"function\": \"refreshTableData\"}], \"after\": [] }',NULL,'insert',NULL,NULL,NULL);
+INSERT INTO `_ui` (`id`,`pageId`,`uiActionType`,`uiActionId`,`desc`,`uiActionConfig`,`appDataSchema`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (56,'doUiActionComponent','ui','computedTableData','✅处理数据','{ \"main\": [{\"function\": \"computedTableData\"}] }',NULL,'update','vscode','vscode','2022-09-09T15:10:15+08:00');
+
 
 
 # ------------------------------------------------------------
@@ -475,7 +503,7 @@ CREATE TABLE `_user_session` (
   KEY `userId_index` (`userId`),
   KEY `userId_deviceId_index` (`userId`, `deviceId`) USING BTREE,
   KEY `authToken_index` (`authToken`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 COMMENT = '用户session表; deviceId 维度;软删除未启用;';
+) ENGINE = InnoDB AUTO_INCREMENT = 26 COMMENT = '用户session表; deviceId 维度;软删除未启用;';
 
 
 
@@ -531,9 +559,7 @@ CREATE TABLE `student` (
   `operationAt` varchar(255) DEFAULT NULL COMMENT '操作时间; E.g: 2021-05-28T10:24:54+08:00 ',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `studentId` (`studentId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 177;
-
-
+) ENGINE = InnoDB AUTO_INCREMENT = 184;
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: student
 # ------------------------------------------------------------
@@ -543,7 +569,6 @@ INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,
 INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,`level`,`bodyHeight`,`studentStatus`,`remarks`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (173,'121432','21434',NULL,NULL,'2021-01级-01班',NULL,NULL,NULL,NULL,'jhInsert','admin','系统管理员','2022-05-01T23:37:58+08:00');
 INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,`level`,`bodyHeight`,`studentStatus`,`remarks`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (175,'1000221','221','male','2022-05-08','2021-01级-02班','01',NULL,NULL,NULL,'jhUpdate','admin','系统管理员','2022-05-03T20:50:51+08:00');
 INSERT INTO `student` (`id`,`studentId`,`name`,`gender`,`dateOfBirth`,`classId`,`level`,`bodyHeight`,`studentStatus`,`remarks`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (176,'10002222',NULL,'111','11','111','11','11','11',NULL,'jhUpdate','admin','系统管理员','2022-08-22T10:53:00+08:00');
-
 
 
 # ------------------------------------------------------------
