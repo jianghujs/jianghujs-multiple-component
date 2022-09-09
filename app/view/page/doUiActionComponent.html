@@ -11,7 +11,7 @@
 
         <v-col cols="12" xs="12" sm="4" md="4" xl="4" class="pl-0">
           <v-btn color="success" dark class="elevation-0 mr-2" @click="doUiAction('startCreateItem')">新增</v-btn>
-          <span class="body-2">共{{ i.length }}条记录</span>
+          <span class="body-2">共{{ tableData.length }}条记录</span>
         </v-col>
 
         <v-spacer></v-spacer>
@@ -162,7 +162,10 @@
       level: [{"value": "01", "text": "一年级"}, {"value": "02", "text": "二年级"}, {"value": "03", "text": "三年级"}],
       icType: [{"value": "身份证", "text": "身份证"}, {"value": "护照", "text": "护照"}],
       enrollmentType: [{"value": "正常升学", "text": "正常升学"}, {"value": "借读", "text": "借读"}],
-      studentStatus: [{"value": "正常", "text": "正常"}, {"value": "退学", "text": "退学"}]
+      studentStatus: [{"value": "正常", "text": "正常"}, {"value": "退学", "text": "退学"}],
+      class: [
+        { text: '全部班级', value: 'all' },
+      ],
     },
     currentTableGenderType: 'all',
     isEditDrawerShow: false,
@@ -184,7 +187,6 @@
       {text: "操作时间", value: "operationAt", width: 250},
       {text: '操作', value: 'action', align: 'center', sortable: false, width: 200, class: 'fixed', cellClass: 'fixed'},
     ],
-
     editItem: {},
   })
 </script>
