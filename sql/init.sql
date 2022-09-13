@@ -126,8 +126,8 @@ CREATE TABLE `_page` (
 # DATA DUMP FOR TABLE: _page
 # ------------------------------------------------------------
 
-INSERT INTO `_page` (`id`,`pageId`,`pageFile`,`pageName`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (2,'help',NULL,'帮助','dynamicInMenu','11','insert',NULL,NULL,NULL);
-INSERT INTO `_page` (`id`,`pageId`,`pageFile`,`pageName`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (3,'login',NULL,'登陆','','','insert',NULL,NULL,NULL);
+INSERT INTO `_page` (`id`,`pageId`,`pageFile`,`pageName`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (2,'help','helpV3','帮助','dynamicInMenu','11','insert',NULL,NULL,NULL);
+INSERT INTO `_page` (`id`,`pageId`,`pageFile`,`pageName`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (3,'login','loginV3','登陆','','','insert',NULL,NULL,NULL);
 INSERT INTO `_page` (`id`,`pageId`,`pageFile`,`pageName`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (34,'doUiAction',NULL,'doUiAction','showInMenu','5','insert',NULL,NULL,NULL);
 INSERT INTO `_page` (`id`,`pageId`,`pageFile`,`pageName`,`pageType`,`sort`,`operation`,`operationByUserId`,`operationByUser`,`operationAt`) VALUES (35,'doUiActionComponent',NULL,'doUiAction组件通信','showInMenu','5','insert',NULL,NULL,NULL);
 
