@@ -1,4 +1,4 @@
-# jianghu-multiple-component
+# jianghujs-multiple-component
 
 ## 配置
 
@@ -10,7 +10,7 @@
    port: 3306,
    user: 'root',
    password: '123456',
-   database: 'jianghu-multiple-component'
+   database: 'jianghujs-multiple-component'
    ```
 4. 启动 npm run dev
 
@@ -18,8 +18,8 @@
 
 ```sql
 # 数据库初始化
-create database `jianghu-multiple-component` default character set utf8mb4 collate utf8mb4_bin;
-use jianghu-multiple-component;
+create database `jianghujs-multiple-component` default character set utf8mb4 collate utf8mb4_bin;
+use jianghujs-multiple-component;
 # 运行 sql/init.sql 文件
 ```
 
