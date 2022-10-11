@@ -2,7 +2,7 @@
   <span>
 
     <v-select class="cus-v-input" :class="{'mr-3': !isMobile, 'mr-0': isMobile}" @mouseup="classSelectDialog_shown = true" v-model="classSelectDialog_selected"
-    :items="[{value: 'all', text: '全部'}, ...classSelectDialog_dataList]" readonly :label="classSelectDialog_title" hide-details dense
+    :items="[{value: 'all', text: '全部'}, ...classSelectDialog_dataList]" readonly prefix="班级：" hide-details dense
               filled single-line hide-no-data hide-selected />
 
     
